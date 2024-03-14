@@ -15,6 +15,9 @@ async function importProvincias() {
       });
     })
   );
+
+  const { data: provs } = await axios.get(url + 'provincias');
+  return provs;
 }
 
 async function importDepartamentos() {
@@ -23,11 +26,12 @@ async function importDepartamentos() {
 
   await Promise.all(
     departamentos.departamentos.map(async (departamento) => {
-      const { nombre, provincia } = departamento;
       const {
-        data: [{ id: idProvincia }],
-      } = await axios.get(url + 'provincias?nombre=' + provincia.nombre);
+        nombre,
+        provincia: { nombre: nombreProv },
+      } = departamento;
 
+      const idProvincia = provincias.find((p) => p.nombre === nombreProv).id;
       await axios.post(url + 'departamentos', {
         nombre,
         idProvincia,
@@ -42,10 +46,23 @@ async function importLocalidades() {
   const localidadesArray = [];
   await Promise.all(
     localidades.localidades.map(async (localidad) => {
-      const { nombre, departamento } = localidad;
+      const {
+        nombre,
+        departamento: { nombre: nombreDep },
+        provincia: { nombre: nombreProv },
+      } = localidad;
+
+      const idProvincia = provincias.find((p) => p.nombre === nombreProv).id;
+
       const {
         data: [{ id: idDepartamento }],
-      } = await axios.get(url + 'departamentos?nombre=' + departamento.nombre);
+      } = await axios.get(
+        url +
+          'departamentos?nombre=' +
+          nombreDep +
+          '&idProvincia=' +
+          idProvincia
+      );
 
       if (
         localidadesArray.find(
@@ -63,6 +80,6 @@ async function importLocalidades() {
   );
 }
 
-await importProvincias();
+const provincias = await importProvincias();
 await importDepartamentos();
 await importLocalidades();
