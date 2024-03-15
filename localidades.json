@@ -45032,23 +45032,6 @@
       "centroide": { "lon": -65.2925383061096, "lat": -26.8160416854849 }
     },
     {
-      "id": "94021010",
-      "nombre": "Puerto Argentino",
-      "fuente": "IGN",
-      "provincia": {
-        "id": "94",
-        "nombre": "Tierra del Fuego, Antártida e Islas del Atlántico Sur"
-      },
-      "departamento": { "id": "94021", "nombre": "Islas del Atlántico Sur" },
-      "municipio": { "id": null, "nombre": null },
-      "localidad_censal": {
-        "id": "94021010",
-        "nombre": "Bahía Fox (Is. Malvinas)"
-      },
-      "categoria": "Localidad simple",
-      "centroide": { "lon": -57.8608555040022, "lat": -51.6936791269923 }
-    },
-    {
       "id": "0208401002",
       "nombre": "Saavedra",
       "fuente": "INDEC",
@@ -45749,6 +45732,20 @@
       "centroide": { "lon": -67.6963281355519, "lat": -53.7863260891398 }
     },
     {
+      "nombre": "Cullen",
+      "provincia": {
+        "nombre": "Tierra del Fuego, Antártida e Islas del Atlántico Sur"
+      },
+      "departamento": { "nombre": "Río Grande" }
+    },
+    {
+      "nombre": "San Sebastián",
+      "provincia": {
+        "nombre": "Tierra del Fuego, Antártida e Islas del Atlántico Sur"
+      },
+      "departamento": { "nombre": "Río Grande" }
+    },
+    {
       "id": "94015020",
       "nombre": "Ushuaia",
       "fuente": "INDEC",
@@ -45775,6 +45772,13 @@
       "localidad_censal": { "id": "94015010", "nombre": "Laguna Escondida" },
       "categoria": "Localidad simple",
       "centroide": { "lon": -67.7629045285789, "lat": -54.6407832656577 }
+    },
+    {
+      "nombre": "Tolhuin",
+      "provincia": {
+        "nombre": "Tierra del Fuego, Antártida e Islas del Atlántico Sur"
+      },
+      "departamento": { "nombre": "Tolhuin" }
     }
   ]
 }

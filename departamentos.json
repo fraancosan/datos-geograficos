@@ -2293,19 +2293,6 @@
       "centroide": { "lon": -53.9629780421788, "lat": -26.62996077436 }
     },
     {
-      "id": "94028",
-      "nombre": "Antártida Argentina",
-      "nombre_completo": "Departamento Antártida Argentina",
-      "provincia": {
-        "id": "94",
-        "nombre": "Tierra del Fuego, Antártida e Islas del Atlántico Sur",
-        "interseccion": 0.991219629079016
-      },
-      "fuente": "IGN",
-      "categoria": "Departamento",
-      "centroide": { "lon": -50.6480306037361, "lat": -82.7776766547034 }
-    },
-    {
       "id": "58077",
       "nombre": "Minas",
       "nombre_completo": "Departamento Minas",
@@ -3942,19 +3929,6 @@
       "fuente": "IGN",
       "categoria": "Departamento",
       "centroide": { "lon": -54.8023437852311, "lat": -27.1478365768268 }
-    },
-    {
-      "id": "94021",
-      "nombre": "Islas del Atlántico Sur",
-      "nombre_completo": "Departamento Islas del Atlántico Sur",
-      "provincia": {
-        "id": "94",
-        "nombre": "Tierra del Fuego, Antártida e Islas del Atlántico Sur",
-        "interseccion": 0.00373105357744606
-      },
-      "fuente": "IGN",
-      "categoria": "Departamento",
-      "centroide": { "lon": -53.4026402162418, "lat": -52.5006628799787 }
     },
     {
       "id": "06260",
