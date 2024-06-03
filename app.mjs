@@ -1,7 +1,10 @@
 import axios from 'axios';
 import fs from 'fs/promises';
 
-const url = 'http://localhost:3000/';
+const urlBase = 'http://localhost:3000/';
+const urlProvincias = urlBase + 'provincias';
+const urlDepartamentos = urlBase + 'departamentos';
+const urlLocalidades = urlBase + 'localidades';
 
 async function importProvincias() {
   const data = await fs.readFile('./provincias.json');
@@ -9,14 +12,15 @@ async function importProvincias() {
 
   await Promise.all(
     provincias.provincias.map(async (provincia) => {
+      // fields to import
       const { nombre } = provincia;
-      await axios.post(url + 'provincias', {
+      await axios.post(urlProvincias, {
         nombre,
       });
     })
   );
 
-  const { data: provs } = await axios.get(url + 'provincias');
+  const { data: provs } = await axios.get(urlProvincias);
   return provs;
 }
 
@@ -26,13 +30,14 @@ async function importDepartamentos() {
 
   await Promise.all(
     departamentos.departamentos.map(async (departamento) => {
+      // fields to import
       const {
         nombre,
         provincia: { nombre: nombreProv },
       } = departamento;
 
       const idProvincia = provincias.find((p) => p.nombre === nombreProv).id;
-      await axios.post(url + 'departamentos', {
+      await axios.post(urlDepartamentos, {
         nombre,
         idProvincia,
       });
@@ -46,6 +51,7 @@ async function importLocalidades() {
   const localidadesArray = [];
   await Promise.all(
     localidades.localidades.map(async (localidad) => {
+      // fields to import
       const {
         nombre,
         departamento: { nombre: nombreDep },
@@ -57,8 +63,8 @@ async function importLocalidades() {
       const {
         data: [{ id: idDepartamento }],
       } = await axios.get(
-        url +
-          'departamentos?nombre=' +
+        urlDepartamentos +
+          '?nombre=' +
           nombreDep +
           '&idProvincia=' +
           idProvincia
@@ -72,7 +78,7 @@ async function importLocalidades() {
         return;
       localidadesArray.push({ nombre, idDepartamento });
 
-      await axios.post(url + 'localidades', {
+      await axios.post(urlLocalidades, {
         nombre,
         idDepartamento,
       });
